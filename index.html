@@ -87,39 +87,65 @@
         </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="bg-light section-padding">
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-white">
         <div class="container">
-            <h2 class="section-title text-center">Skills</h2>
+            <h2 class="section-title text-center mb-5">Skills</h2>
 
-            <div class="row mt-5 justify-content-center">
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>HTML5</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>CSS3</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>Bootstrap</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>JavaScript</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>ASP.NET</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>jQuery</h5>
-                </div>
-                <div class="col-md-2 col-6 text-center mb-4">
-                    <h5>AJAX</h5>
+            <div class="row justify-content-center">
+                <div class="col-md-10 d-flex flex-wrap justify-content-center">
+
+                    <!-- HTML -->
+                    <div class="skill-item text-center m-3">
+                        <img src="html.png" alt="HTML" width="60" class="mb-2">
+                        <p>HTML</p>
+                    </div>
+
+                    <!-- CSS -->
+                    <div class="skill-item text-center m-3">
+                        <img src="css-3.png" alt="CSS" width="60" class="mb-2">
+                        <p>CSS</p>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="skill-item text-center m-3">
+                        <img src="js.png" alt="JavaScript" width="60" class="mb-2">
+                        <p>JavaScript</p>
+                    </div>
+
+                    <!-- ASP.NET -->
+                    <div class="skill-item text-center m-3">
+                        <img src=".Net.png" alt="ASP.NET" width="60" class="mb-2">
+                        <p>ASP.NET</p>
+                    </div>
+
+                    <!-- jQuery -->
+                    <div class="skill-item text-center m-3">
+                        <img src="jQuery.png" alt="jQuery" width="60" class="mb-2">
+                        <p>jQuery</p>
+                    </div>
+
+                    <!-- AJAX -->
+                    <div class="skill-item text-center m-3">
+                        <img src="Ajax.png" alt="AJAX" width="60" class="mb-2">
+                        <p>AJAX</p>
+                    </div>
+
+                    <!-- Bootstrap -->
+                    <div class="skill-item text-center m-3">
+                        <img src="Bootstrap.png" alt="Bootstrap" width="60" class="mb-2">
+                        <p>Bootstrap</p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
 
-    <!-- Education Section -->
+
+
+    <!-- Education -->
     <section id="education" class="section-padding bg-white">
         <div class="container">
             <h2 class="section-title text-center mb-5">Education</h2>
@@ -128,25 +154,68 @@
                 <div class="col-md-8">
 
                     <!-- University -->
-                    <div class="education-item mb-4">
-                        <h5>Bachelor in Computer Science</h5>
-                        <p class="text-muted mb-1">Cairo University (Expected Graduation: 2027)</p>
-                        <p>Currently pursuing my degree, focusing on web development, programming languages, and software engineering principles.</p>
+                    <div class="education-item d-flex align-items-center mb-4">
+                        <img src="Cairo University.png" alt="Cairo University" width="80" class="me-3 rounded shadow-sm">
+                        <div>
+                            <h5>Bachelor in Computer Science</h5>
+                            <p class="text-muted mb-1">Cairo University (Expected Graduation: 2027)</p>
+                            <p>Currently pursuing my degree, focusing on web development, programming languages, and software engineering principles.</p>
+                        </div>
                     </div>
-
-                    <!--  Online Courses / Certifications -->
-                    <div class="education-item mb-4">
-                        <h5>CLS learning Solutions (Microsoft Partners)</h5>
-                        <ul class="list-unstyled">
-                            <li>Developing ASP .NET WEB APPLICATIONS</li>
-                            <li>Programming in HTML5, JavaScript, CSS3</li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>
     </section>
+
+
+
+    <!-- Certifications -->
+    <section id="certifications" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Certifications & Trainings</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+
+                    <div id="certCarousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner">
+
+                            <!-- Certificate 1 -->
+                            <div class="carousel-item active text-center">
+                                <img src="Asp.netCert.png" class="d-block mx-auto rounded shadow-sm w-75" alt="ASP.NET Workshop">
+                                <p class="mt-2">Developing ASP.NET Web Applications</p>
+                            </div>
+
+                            <!-- Certificate 2 -->
+                            <div class="carousel-item text-center">
+                                <img src="FrontEndCert.png" class="d-block mx-auto rounded shadow-sm w-75" alt="HTML/CSS/JS Course">
+                                <p class="mt-2">Programming in HTML5, CSS3, JavaScript</p>
+                            </div>
+
+                            <!-- Certificate 3 -->
+                            <div class="carousel-item text-center">
+                                <img src="ClsCert.png" class="d-block mx-auto rounded shadow-sm w-75" alt="FULLStack Course">
+                                <p class="mt-2">Asp Full Stack Developer</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Carousel Controls (Overlay Arrows) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#certCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#certCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
     <!-- Services -->

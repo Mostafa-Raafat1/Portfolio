@@ -68,3 +68,72 @@ footer {
 .contact-item a:hover {
     text-decoration: underline;
 }
+
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.skill-item img {
+     width: 60px;
+    height: 60px; /* force same height for all icons */
+    object-fit: contain; /* ensure icon fits without stretching */
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s;
+    vertical-align: middle;
+}
+
+.skill-item img:hover {
+     transform: scale(1.1);
+}
+
+.skill-item p {
+     margin: 0;
+     font-weight: 500;
+     color: #333;
+     text-align: center;
+}
+
+
+#certCarousel .carousel-control-prev-icon,
+#certCarousel .carousel-control-next-icon {
+    background-size: 50% 50%; /* smaller arrows */
+}
+
+#certCarousel .carousel-control-prev,
+#certCarousel .carousel-control-next {
+    width: 50px; /* smaller clickable area */
+    height: 50px;
+    top: 50%; /* vertically center */
+    transform: translateY(-50%);
+    opacity: 0.8;
+}
+
+#certCarousel .carousel-control-prev:hover,
+#certCarousel .carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Stabilize without breaking Bootstrap */
+#certifications {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* Carousel slides safe */
+#certCarousel .carousel-item {
+    text-align: center;
+    padding: 20px 0;
+}
+
+    /* Image styling without breaking Bootstrap */
+#certCarousel .carousel-item img {
+    max-height: 300px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    object-fit: contain;
+}
