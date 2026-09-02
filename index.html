@@ -1,478 +1,2226 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mostafa Raafat — Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <style>
-    :root {
-      --ice-0: #f0f6ff;
-      --ice-1: #e2eeff;
-      --ice-2: #c8dcf8;
-      --ice-3: #a8c4f0;
-      --frost: rgba(220,235,255,0.55);
-      --blue-mid: #4a80d4;
-      --blue-deep: #1a4fa0;
-      --blue-ink: #0e2d6e;
-      --text: #0e2340;
-      --muted: #5a7a9e;
-      --border: rgba(100,160,220,0.18);
-      --card-bg: rgba(230,242,255,0.6);
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
-      --font-serif: 'Instrument Serif', serif;
-      --radius: 18px;
-      --ease: cubic-bezier(.4,0,.2,1);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--ice-0);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 1rem; line-height: 1.7;
-      overflow-x: hidden;
-    }
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse 80% 60% at 10% 10%, rgba(160,200,255,0.35) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 90% 80%, rgba(180,215,255,0.28) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(210,230,255,0.15) 0%, transparent 70%);
-    }
-    .shard {
-      position: fixed; pointer-events: none; z-index: 0; opacity: 0;
-      animation: floatShard linear infinite;
-    }
-    @keyframes floatShard {
-      0%   { opacity:0;    transform:translateY(100vh) rotate(0deg); }
-      10%  { opacity:0.18; }
-      90%  { opacity:0.18; }
-      100% { opacity:0;    transform:translateY(-120px) rotate(360deg); }
-    }
+    <meta charset="UTF-8">
+    <title>Mostafa Raafat — Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    /* NAV */
-    nav {
-      position: fixed; top:0; left:0; right:0; z-index:200;
-      padding:1rem 0;
-      background:rgba(230,242,255,0.72);
-      backdrop-filter:blur(20px) saturate(180%);
-      border-bottom:1px solid var(--border);
-    }
-    .nav-inner {
-      max-width:1160px; margin:auto; padding:0 2rem;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .brand { font-family:var(--font-sans); font-weight:800; font-size:1.15rem; color:var(--blue-ink); text-decoration:none; letter-spacing:-.4px; }
-    .brand em { font-style:normal; color:var(--blue-mid); }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; font-weight:600; letter-spacing:.04em; transition:color .25s; }
-    .nav-links a:hover { color:var(--blue-deep); }
-    .hamburger { display:none; background:none; border:none; cursor:pointer; }
-    .hamburger span { display:block; width:22px; height:2px; background:var(--blue-ink); margin:5px 0; border-radius:2px; transition:.3s; }
-    @media(max-width:768px){
-      .hamburger { display:block; }
-      .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(230,242,255,.97); backdrop-filter:blur(20px); padding:1.5rem 2rem; gap:1.25rem; border-bottom:1px solid var(--border); }
-      .nav-links.open { display:flex; }
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-    /* HERO */
-    .hero {
-      min-height:100vh; display:flex; align-items:center; justify-content:center;
-      text-align:center; padding:9rem 2rem 6rem;
-      position:relative; z-index:1; overflow:hidden;
-    }
-    .hero-circle {
-      position:absolute; width:720px; height:720px; border-radius:50%;
-      background:radial-gradient(circle at 40% 40%, rgba(180,215,255,0.55), rgba(200,230,255,0.1) 65%, transparent 80%);
-      top:50%; left:50%; transform:translate(-50%,-50%);
-      pointer-events:none;
-      animation:breathe 7s ease-in-out infinite;
-    }
-    @keyframes breathe { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.06)} }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-    .hero-tag {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:rgba(200,225,255,0.7); backdrop-filter:blur(10px);
-      border:1px solid rgba(120,180,255,0.35);
-      color:var(--blue-deep); font-size:.78rem; font-weight:700;
-      letter-spacing:.08em; text-transform:uppercase;
-      padding:.4rem 1.1rem; border-radius:100px; margin-bottom:1.75rem;
-      animation:riseIn .8s var(--ease) both;
-    }
-    .hero-tag .pulse { width:7px; height:7px; border-radius:50%; background:var(--blue-mid); animation:blink 1.6s ease infinite; }
-    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.7)} }
+    <style>
+        :root {
+            --ice-0: #f0f6ff;
+            --ice-1: #e2eeff;
+            --ice-2: #c8dcf8;
+            --ice-3: #a8c4f0;
+            --frost: rgba(220,235,255,0.55);
+            --blue-mid: #4a80d4;
+            --blue-deep: #1a4fa0;
+            --blue-ink: #0e2d6e;
+            --text: #0e2340;
+            --muted: #5a7a9e;
+            --border: rgba(100,160,220,0.18);
+            --card-bg: rgba(230,242,255,0.6);
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+            --radius: 18px;
+            --ease: cubic-bezier(.4,0,.2,1);
+        }
 
-    .hero h1 {
-      font-family:var(--font-sans); font-size:clamp(2.8rem,7vw,5.5rem);
-      font-weight:800; line-height:1.05; letter-spacing:-3px; color:var(--blue-ink);
-      animation:riseIn .9s var(--ease) .1s both;
-    }
-    .hero h1 .serif-word { font-family:var(--font-serif); font-weight:400; font-style:italic; color:var(--blue-mid); letter-spacing:-1px; }
-    .hero-sub { max-width:520px; margin:1.75rem auto 0; color:var(--muted); font-size:1.05rem; animation:riseIn 1s var(--ease) .2s both; }
-    .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.75rem; animation:riseIn 1s var(--ease) .3s both; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .btn-ice {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:var(--blue-deep); color:#fff; font-weight:700; font-size:.9rem;
-      padding:.85rem 2.1rem; border-radius:100px; text-decoration:none; border:none; cursor:pointer;
-      transition:.3s var(--ease); box-shadow:0 8px 30px rgba(26,79,160,0.28);
-    }
-    .btn-ice:hover { background:var(--blue-ink); transform:translateY(-3px); box-shadow:0 14px 40px rgba(26,79,160,0.38); }
-    .btn-frost {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:rgba(200,225,255,0.6); backdrop-filter:blur(10px);
-      color:var(--blue-deep); font-weight:700; font-size:.9rem;
-      padding:.85rem 2.1rem; border-radius:100px; text-decoration:none;
-      border:1px solid rgba(120,180,255,0.4); transition:.3s var(--ease);
-    }
-    .btn-frost:hover { background:rgba(180,215,255,0.75); transform:translateY(-3px); }
-    @keyframes riseIn { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* LAYOUT */
-    .container { max-width:1160px; margin:auto; padding:0 2rem; position:relative; z-index:1; }
-    .section-pad { padding:7rem 0; }
-    .eyebrow {
-      display:inline-flex; align-items:center; gap:.6rem;
-      font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
-      color:var(--blue-mid); margin-bottom:.75rem;
-    }
-    .eyebrow::before { content:''; width:20px; height:2px; background:var(--blue-mid); border-radius:2px; }
-    h2.sh {
-      font-family:var(--font-sans); font-weight:800;
-      font-size:clamp(1.9rem,3.5vw,2.8rem); letter-spacing:-1.5px; line-height:1.1;
-      color:var(--blue-ink); margin-bottom:3rem;
-    }
-    h2.sh em { font-family:var(--font-serif); font-style:italic; font-weight:400; color:var(--blue-mid); }
+        body {
+            background: var(--ice-0);
+            color: var(--text);
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-    /* GLASS */
-    .glass {
-      background:var(--card-bg); backdrop-filter:blur(18px) saturate(160%);
-      border:1px solid var(--border); border-radius:var(--radius);
-    }
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                z-index: 0;
+                pointer-events: none;
+                background: radial-gradient( ellipse 80% 60% at 10% 10%, rgba(160,200,255,0.35) 0%, transparent 60% ), radial-gradient( ellipse 60% 50% at 90% 80%, rgba(180,215,255,0.28) 0%, transparent 55% ), radial-gradient( ellipse 50% 40% at 50% 50%, rgba(210,230,255,0.15) 0%, transparent 70% );
+            }
 
-    /* ABOUT */
-    .about-grid { display:grid; grid-template-columns:280px 1fr; gap:5rem; align-items:center; }
-    @media(max-width:768px){ .about-grid{grid-template-columns:1fr; gap:2.5rem; text-align:center;} }
-    .photo-frame { position:relative; width:240px; margin:auto; }
-    .photo-frame::before {
-      content:''; position:absolute; inset:-12px; border-radius:50%;
-      background:conic-gradient(rgba(120,180,255,.6) 0deg,rgba(200,230,255,.2) 120deg,rgba(74,128,212,.7) 240deg,rgba(120,180,255,.6) 360deg);
-      animation:spinRing 8s linear infinite;
-    }
-    .photo-frame::after { content:''; position:absolute; inset:-8px; border-radius:50%; background:var(--ice-0); }
-    @keyframes spinRing { to{transform:rotate(360deg)} }
-    .photo-frame img { position:relative; z-index:2; width:240px; height:240px; border-radius:50%; object-fit:cover; border:3px solid rgba(180,215,255,.6); }
-    .about-text p { color:var(--muted); margin-bottom:1rem; font-size:.97rem; }
+        /* FLOATING SHARDS */
 
-    /* SKILLS */
-    #skills { background:rgba(210,230,252,0.3); }
-    .skills-wrap { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:1rem; }
-    .skill-pill {
-      background:rgba(230,242,255,0.8); backdrop-filter:blur(14px);
-      border:1px solid var(--border); border-radius:14px; padding:1.5rem 1rem;
-      text-align:center; transition:.3s var(--ease);
-    }
-    .skill-pill:hover { transform:translateY(-5px); border-color:rgba(74,128,212,.4); box-shadow:0 12px 35px rgba(74,128,212,.12); }
-    .skill-pill img { width:44px; height:44px; object-fit:contain; margin-bottom:.6rem; }
-    .skill-pill p { font-size:.82rem; font-weight:600; color:var(--blue-deep); margin:0; }
+        .shard {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: floatShard linear infinite;
+        }
 
-    /* EDUCATION */
-    .edu-card { display:flex; gap:1.5rem; align-items:flex-start; padding:2rem; max-width:680px; }
-    .edu-card img { width:68px; border-radius:12px; flex-shrink:0; }
-    .edu-card h5 { font-weight:800; font-size:1.1rem; color:var(--blue-ink); margin-bottom:.25rem; }
-    .edu-year { color:var(--blue-mid); font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.5rem; }
-    .edu-card p { color:var(--muted); font-size:.9rem; margin:0; }
+        @keyframes floatShard {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
 
-    /* CERTS */
-    #certifications { background:rgba(210,230,252,0.3); }
-    .cert-wrap { max-width:680px; margin:auto; }
-    .cert-outer { border-radius:var(--radius); overflow:hidden; padding:1.5rem; }
-    .cert-track { display:flex; transition:transform .55s var(--ease); }
-    .cert-item { min-width:100%; text-align:center; }
-    .cert-item img { max-width:100%; border-radius:12px; box-shadow:0 20px 60px rgba(26,79,160,.15); }
-    .cert-item p { margin-top:1rem; color:var(--muted); font-size:.88rem; font-weight:500; }
-    .cert-footer { display:flex; align-items:center; justify-content:center; gap:1rem; margin-top:1.5rem; }
-    .c-btn {
-      width:40px; height:40px; border-radius:50%;
-      background:rgba(200,225,255,.7); backdrop-filter:blur(10px);
-      border:1px solid var(--border); color:var(--blue-deep);
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:.25s; font-size:.9rem;
-    }
-    .c-btn:hover { background:var(--blue-deep); color:#fff; border-color:transparent; }
-    .c-dots { display:flex; gap:.45rem; align-items:center; }
-    .c-dot { width:7px; height:7px; border-radius:50%; background:var(--ice-2); cursor:pointer; transition:.3s; }
-    .c-dot.on { background:var(--blue-mid); width:18px; border-radius:4px; }
+            10% {
+                opacity: 0.18;
+            }
 
-    /* SERVICES */
-    .srv-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.25rem; }
-    .srv-card { padding:2rem; transition:.35s var(--ease); position:relative; overflow:hidden; }
-    .srv-card::after { content:''; position:absolute; inset:0; border-radius:var(--radius); background:linear-gradient(135deg,rgba(120,180,255,.08),transparent); opacity:0; transition:.35s; }
-    .srv-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(74,128,212,.12); }
-    .srv-card:hover::after { opacity:1; }
-    .srv-icon {
-      width:50px; height:50px; border-radius:14px;
-      background:rgba(74,128,212,.1); border:1px solid rgba(74,128,212,.2);
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.3rem; color:var(--blue-mid); margin-bottom:1.25rem;
-    }
-    .srv-card h5 { font-weight:800; font-size:1.05rem; color:var(--blue-ink); margin-bottom:.6rem; }
-    .srv-card p { color:var(--muted); font-size:.9rem; margin:0; }
+            90% {
+                opacity: 0.18;
+            }
 
-    /* PROJECTS */
-    #projects { background:rgba(210,230,252,0.3); }
-    .proj-block { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; padding:3.5rem 0; border-bottom:1px solid var(--border); }
-    .proj-block:last-child { border-bottom:none; padding-bottom:0; }
-    .proj-block.flip { direction:rtl; }
-    .proj-block.flip > * { direction:ltr; }
-    @media(max-width:768px){ .proj-block,.proj-block.flip { grid-template-columns:1fr; direction:ltr; } }
-    .proj-num { font-size:4.5rem; font-weight:800; line-height:1; color:rgba(74,128,212,.1); letter-spacing:-3px; font-family:var(--font-sans); margin-bottom:.25rem; }
-    .proj-info h3 { font-weight:800; font-size:1.5rem; letter-spacing:-.6px; color:var(--blue-ink); margin-bottom:1rem; line-height:1.25; }
-    .proj-info p { color:var(--muted); font-size:.93rem; margin-bottom:.75rem; }
-    .tags { display:flex; flex-wrap:wrap; gap:.45rem; margin:1.25rem 0; }
-    .tag { font-size:.72rem; font-weight:700; letter-spacing:.05em; padding:.3rem .85rem; border-radius:100px; background:rgba(74,128,212,.1); border:1px solid rgba(74,128,212,.25); color:var(--blue-deep); }
-    .pcar { position:relative; border-radius:var(--radius); overflow:hidden; }
-    .pcar-track { display:flex; transition:transform .5s var(--ease); }
-    .pcar-slide { min-width:100%; }
-    .pcar-slide img { width:100%; display:block; }
-    .pcar-nav { position:absolute; top:50%; transform:translateY(-50%); width:100%; padding:0 .75rem; display:flex; justify-content:space-between; pointer-events:none; }
-    .pcar-btn { width:36px; height:36px; border-radius:50%; background:rgba(230,242,255,.8); backdrop-filter:blur(10px); border:1px solid var(--border); color:var(--blue-deep); display:flex; align-items:center; justify-content:center; cursor:pointer; pointer-events:all; transition:.25s; font-size:.85rem; }
-    .pcar-btn:hover { background:var(--blue-deep); color:#fff; border-color:transparent; }
-    .pcar-count { position:absolute; bottom:.75rem; right:.85rem; background:rgba(230,242,255,.75); backdrop-filter:blur(8px); border:1px solid var(--border); border-radius:100px; padding:.18rem .7rem; font-size:.72rem; font-weight:600; color:var(--blue-deep); }
+            100% {
+                opacity: 0;
+                transform: translateY(-120px) rotate(360deg);
+            }
+        }
 
-    /* CONTACT */
-    .contact-box { max-width:580px; margin:auto; text-align:center; }
-    .contact-box > p { color:var(--muted); margin-bottom:2.5rem; }
-    .clinks { display:flex; flex-direction:column; gap:.9rem; }
-    .clink { display:flex; align-items:center; gap:1.1rem; padding:1.2rem 1.5rem; border-radius:var(--radius); text-decoration:none; color:var(--text); transition:.3s var(--ease); }
-    .clink:hover { transform:translateX(5px); box-shadow:0 10px 35px rgba(74,128,212,.12); }
-    .clink .ci { width:44px; height:44px; border-radius:12px; flex-shrink:0; background:rgba(74,128,212,.1); border:1px solid rgba(74,128,212,.2); display:flex; align-items:center; justify-content:center; color:var(--blue-mid); font-size:1.1rem; }
-    .clink .cl { font-size:.72rem; color:var(--muted); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-    .clink .cv { font-weight:600; font-size:.95rem; color:var(--blue-ink); }
+        /* NAVIGATION */
 
-    footer { text-align:center; padding:2.5rem; border-top:1px solid var(--border); color:var(--muted); font-size:.83rem; }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            padding: 1rem 0;
+            background: rgba(230,242,255,0.72);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border);
+        }
 
-    /* REVEAL */
-    .reveal { opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
-    .reveal.on { opacity:1; transform:none; }
-  </style>
+        .nav-inner {
+            max-width: 1160px;
+            margin: auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--blue-ink);
+            text-decoration: none;
+            letter-spacing: -0.4px;
+        }
+
+            .brand em {
+                font-style: normal;
+                color: var(--blue-mid);
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+            .nav-links a {
+                color: var(--muted);
+                text-decoration: none;
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                transition: color 0.25s;
+            }
+
+                .nav-links a:hover {
+                    color: var(--blue-deep);
+                }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+            .hamburger span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background: var(--blue-ink);
+                margin: 5px 0;
+                border-radius: 2px;
+                transition: 0.3s;
+            }
+
+        @media(max-width:768px) {
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(230,242,255,.97);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem 2rem;
+                gap: 1.25rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+                .nav-links.open {
+                    display: flex;
+                }
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 9rem 2rem 6rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .hero-circle {
+            position: absolute;
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            background: radial-gradient( circle at 40% 40%, rgba(180,215,255,0.55), rgba(200,230,255,0.1) 65%, transparent 80% );
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            animation: breathe 7s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+
+            0%,100% {
+                transform: translate(-50%,-50%) scale(1);
+            }
+
+            50% {
+                transform: translate(-50%,-50%) scale(1.06);
+            }
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(200,225,255,0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(120,180,255,0.35);
+            color: var(--blue-deep);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1.1rem;
+            border-radius: 100px;
+            margin-bottom: 1.75rem;
+            animation: riseIn 0.8s var(--ease) both;
+        }
+
+            .hero-tag .pulse {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--blue-mid);
+                animation: blink 1.6s ease infinite;
+            }
+
+        @keyframes blink {
+
+            0%,100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(0.7);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-sans);
+            font-size: clamp(2.8rem,7vw,5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -3px;
+            color: var(--blue-ink);
+            animation: riseIn 0.9s var(--ease) 0.1s both;
+        }
+
+            .hero h1 .serif-word {
+                font-family: var(--font-serif);
+                font-weight: 400;
+                font-style: italic;
+                color: var(--blue-mid);
+                letter-spacing: -1px;
+            }
+
+        .hero-sub {
+            max-width: 520px;
+            margin: 1.75rem auto 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+            animation: riseIn 1s var(--ease) 0.2s both;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.75rem;
+            animation: riseIn 1s var(--ease) 0.3s both;
+        }
+
+        .btn-ice {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--blue-deep);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.85rem 2.1rem;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s var(--ease);
+            box-shadow: 0 8px 30px rgba(26,79,160,0.28);
+        }
+
+            .btn-ice:hover {
+                background: var(--blue-ink);
+                transform: translateY(-3px);
+                box-shadow: 0 14px 40px rgba(26,79,160,0.38);
+            }
+
+        .btn-frost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(200,225,255,0.6);
+            backdrop-filter: blur(10px);
+            color: var(--blue-deep);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.85rem 2.1rem;
+            border-radius: 100px;
+            text-decoration: none;
+            border: 1px solid rgba(120,180,255,0.4);
+            transition: 0.3s var(--ease);
+        }
+
+            .btn-frost:hover {
+                background: rgba(180,215,255,0.75);
+                transform: translateY(-3px);
+            }
+
+        @keyframes riseIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* LAYOUT */
+
+        .container {
+            max-width: 1160px;
+            margin: auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-pad {
+            padding: 7rem 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--blue-mid);
+            margin-bottom: 0.75rem;
+        }
+
+            .eyebrow::before {
+                content: '';
+                width: 20px;
+                height: 2px;
+                background: var(--blue-mid);
+                border-radius: 2px;
+            }
+
+        h2.sh {
+            font-family: var(--font-sans);
+            font-weight: 800;
+            font-size: clamp(1.9rem,3.5vw,2.8rem);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            color: var(--blue-ink);
+            margin-bottom: 3rem;
+        }
+
+            h2.sh em {
+                font-family: var(--font-serif);
+                font-style: italic;
+                font-weight: 400;
+                color: var(--blue-mid);
+            }
+
+        /* GLASS */
+
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px) saturate(160%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        /* ABOUT */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        @media(max-width:768px) {
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+        }
+
+        .photo-frame {
+            position: relative;
+            width: 240px;
+            margin: auto;
+        }
+
+            .photo-frame::before {
+                content: '';
+                position: absolute;
+                inset: -12px;
+                border-radius: 50%;
+                background: conic-gradient( rgba(120,180,255,.6) 0deg, rgba(200,230,255,.2) 120deg, rgba(74,128,212,.7) 240deg, rgba(120,180,255,.6) 360deg );
+                animation: spinRing 8s linear infinite;
+            }
+
+            .photo-frame::after {
+                content: '';
+                position: absolute;
+                inset: -8px;
+                border-radius: 50%;
+                background: var(--ice-0);
+            }
+
+        @keyframes spinRing {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .photo-frame img {
+            position: relative;
+            z-index: 2;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(180,215,255,.6);
+        }
+
+        .about-text p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.97rem;
+        }
+
+        /* SKILLS */
+
+        #skills {
+            background: rgba(210,230,252,0.3);
+        }
+
+        .skills-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(120px,1fr));
+            gap: 1rem;
+        }
+
+        .skill-pill {
+            background: rgba(230,242,255,0.8);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: 0.3s var(--ease);
+        }
+
+            .skill-pill:hover {
+                transform: translateY(-5px);
+                border-color: rgba(74,128,212,.4);
+                box-shadow: 0 12px 35px rgba(74,128,212,.12);
+            }
+
+            .skill-pill img {
+                width: 44px;
+                height: 44px;
+                object-fit: contain;
+                margin-bottom: 0.6rem;
+            }
+
+            .skill-pill p {
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: var(--blue-deep);
+                margin: 0;
+            }
+
+        /* EDUCATION */
+
+        .edu-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 2rem;
+            max-width: 680px;
+        }
+
+            .edu-card img {
+                width: 68px;
+                border-radius: 12px;
+                flex-shrink: 0;
+            }
+
+            .edu-card h5 {
+                font-weight: 800;
+                font-size: 1.1rem;
+                color: var(--blue-ink);
+                margin-bottom: 0.25rem;
+            }
+
+        .edu-year {
+            color: var(--blue-mid);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* CERTIFICATIONS */
+
+        #certifications {
+            background: rgba(210,230,252,0.3);
+        }
+
+        .cert-wrap {
+            max-width: 680px;
+            margin: auto;
+        }
+
+        .cert-outer {
+            border-radius: var(--radius);
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .cert-track {
+            display: flex;
+            transition: transform 0.55s var(--ease);
+        }
+
+        .cert-item {
+            min-width: 100%;
+            text-align: center;
+        }
+
+            .cert-item img {
+                max-width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 20px 60px rgba(26,79,160,.15);
+            }
+
+            .cert-item p {
+                margin-top: 1rem;
+                color: var(--muted);
+                font-size: 0.88rem;
+                font-weight: 500;
+            }
+
+        .cert-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .c-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200,225,255,.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            color: var(--blue-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.25s;
+            font-size: 0.9rem;
+        }
+
+            .c-btn:hover {
+                background: var(--blue-deep);
+                color: #fff;
+                border-color: transparent;
+            }
+
+        .c-dots {
+            display: flex;
+            gap: 0.45rem;
+            align-items: center;
+        }
+
+        .c-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--ice-2);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            .c-dot.on {
+                background: var(--blue-mid);
+                width: 18px;
+                border-radius: 4px;
+            }
+
+        /* SERVICES */
+
+        .srv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(270px,1fr));
+            gap: 1.25rem;
+        }
+
+        .srv-card {
+            padding: 2rem;
+            transition: 0.35s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .srv-card::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: var(--radius);
+                background: linear-gradient( 135deg, rgba(120,180,255,.08), transparent );
+                opacity: 0;
+                transition: 0.35s;
+            }
+
+            .srv-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 50px rgba(74,128,212,.12);
+            }
+
+                .srv-card:hover::after {
+                    opacity: 1;
+                }
+
+        .srv-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(74,128,212,.1);
+            border: 1px solid rgba(74,128,212,.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--blue-mid);
+            margin-bottom: 1.25rem;
+        }
+
+        .srv-card h5 {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--blue-ink);
+            margin-bottom: 0.6rem;
+        }
+
+        .srv-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* PROJECTS */
+
+        #projects {
+            background: rgba(210,230,252,0.3);
+        }
+
+        .proj-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .proj-block:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .proj-block.flip {
+                direction: rtl;
+            }
+
+                .proj-block.flip > * {
+                    direction: ltr;
+                }
+
+        @media(max-width:768px) {
+
+            .proj-block,
+            .proj-block.flip {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+        }
+
+        .proj-num {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            color: rgba(74,128,212,.1);
+            letter-spacing: -3px;
+            font-family: var(--font-sans);
+            margin-bottom: 0.25rem;
+        }
+
+        .proj-info h3 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.6px;
+            color: var(--blue-ink);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .proj-info p {
+            color: var(--muted);
+            font-size: 0.93rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin: 1.25rem 0;
+        }
+
+        .tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            padding: 0.3rem 0.85rem;
+            border-radius: 100px;
+            background: rgba(74,128,212,.1);
+            border: 1px solid rgba(74,128,212,.25);
+            color: var(--blue-deep);
+        }
+
+        /* PRODUCTION BADGE */
+
+        .production-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+            background: rgba(74,128,212,.08);
+            border: 1px solid rgba(74,128,212,.2);
+            color: var(--blue-deep);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+            .production-badge i {
+                font-size: 0.55rem;
+            }
+
+        /* PROJECT CAROUSEL */
+
+        .pcar {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .pcar-track {
+            display: flex;
+            transition: transform 0.5s var(--ease);
+        }
+
+        .pcar-slide {
+            min-width: 100%;
+        }
+
+            .pcar-slide img {
+                width: 100%;
+                display: block;
+                height: auto;
+            }
+
+        .pcar-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            padding: 0 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+
+        .pcar-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(230,242,255,.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            color: var(--blue-deep);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            pointer-events: all;
+            transition: 0.25s;
+            font-size: 0.85rem;
+        }
+
+            .pcar-btn:hover {
+                background: var(--blue-deep);
+                color: #fff;
+                border-color: transparent;
+            }
+
+        .pcar-count {
+            position: absolute;
+            bottom: 0.75rem;
+            right: 0.85rem;
+            background: rgba(230,242,255,.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 0.18rem 0.7rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--blue-deep);
+        }
+
+        /* CONTACT */
+
+        .contact-box {
+            max-width: 580px;
+            margin: auto;
+            text-align: center;
+        }
+
+            .contact-box > p {
+                color: var(--muted);
+                margin-bottom: 2.5rem;
+            }
+
+        .clinks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .clink {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.3s var(--ease);
+        }
+
+            .clink:hover {
+                transform: translateX(5px);
+                box-shadow: 0 10px 35px rgba(74,128,212,.12);
+            }
+
+            .clink .ci {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                flex-shrink: 0;
+                background: rgba(74,128,212,.1);
+                border: 1px solid rgba(74,128,212,.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--blue-mid);
+                font-size: 1.1rem;
+            }
+
+            .clink .cl {
+                font-size: 0.72rem;
+                color: var(--muted);
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .clink .cv {
+                font-weight: 600;
+                font-size: 0.95rem;
+                color: var(--blue-ink);
+            }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.83rem;
+        }
+
+        /* REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+            .reveal.on {
+                opacity: 1;
+                transform: none;
+            }
+    </style>
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
 </head>
+
 <body>
 
-  <script>
-    ['rgba(180,215,255,0.5)','rgba(200,230,255,0.4)','rgba(160,200,240,0.45)'].forEach((c,ci)=>{
-      for(let i=0;i<5;i++){
-        const s=document.createElement('div'); s.className='shard';
-        const sz=Math.random()*10+5;
-        s.style.cssText=`left:${Math.random()*100}vw;width:${sz}px;height:${sz}px;border-radius:${Math.random()>.5?'3px':'50%'};background:${c};animation-duration:${12+Math.random()*18}s;animation-delay:${Math.random()*15}s;`;
-        document.body.appendChild(s);
-      }
-    });
-  </script>
+    <!-- FLOATING SHARDS -->
 
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="brand">Mostafa<em>.</em></a>
-      <button class="hamburger" id="ham"><span></span><span></span><span></span></button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+    <script>
 
-  <section class="hero">
-    <div class="hero-circle"></div>
-    <div class="container">
-      <div class="hero-tag"><span class="pulse"></span> Available for freelance work</div>
-      <h1>Business Web<br><span class="serif-word">Solutions</span> Developer</h1>
-      <p class="hero-sub">I build custom web systems that help businesses save time, reduce manual work, and improve customer experience.</p>
-      <div class="hero-ctas">
-        <a href="#projects" class="btn-ice"><i class="bi bi-grid-1x2-fill"></i> View My Work</a>
-        <a href="#contact" class="btn-frost"><i class="bi bi-send"></i> Get in Touch</a>
-      </div>
-    </div>
-  </section>
+        [
+            'rgba(180,215,255,0.5)',
+            'rgba(200,230,255,0.4)',
+            'rgba(160,200,240,0.45)'
+        ].forEach((c) => {
 
-  <section id="about" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">About Me</div><h2 class="sh">The Story <em>So Far</em></h2></div>
-      <div class="about-grid reveal">
-        <div><div class="photo-frame"><img src="Profile Photo.jpg" alt="Mostafa Raafat"></div></div>
-        <div class="about-text">
-          <p>My journey into technology began in middle school when I was first introduced to programming languages. I was fascinated by how code could turn ideas into real, functional systems. That early curiosity inspired me to pursue a degree in Computer Science, where I am currently continuing to develop my knowledge and technical skills.</p>
-          <p>Alongside my university studies, I dedicate significant time to self-learning and building practical projects to strengthen my experience. I continuously explore new concepts and challenge myself to grow as a developer.</p>
-          <p>My goal is to help businesses streamline their operations and enhance their online presence through efficient and reliable web solutions.</p>
+            for (let i = 0; i < 5; i++) {
+
+                const s = document.createElement('div');
+
+                s.className = 'shard';
+
+                const sz = Math.random() * 10 + 5;
+
+                s.style.cssText = `
+              left:${Math.random() * 100}vw;
+              width:${sz}px;
+              height:${sz}px;
+              border-radius:${Math.random() > .5 ? '3px' : '50%'};
+              background:${c};
+              animation-duration:${12 + Math.random() * 18}s;
+              animation-delay:${Math.random() * 15}s;
+            `;
+
+                document.body.appendChild(s);
+
+            }
+
+        });
+
+    </script>
+
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="nav-inner">
+
+            <a href="#" class="brand">
+                Mostafa<em>.</em>
+            </a>
+
+            <button class="hamburger" id="ham">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="skills" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">Technical Skills</div><h2 class="sh">My <em>Toolkit</em></h2></div>
-      <div class="skills-wrap reveal">
-        <div class="skill-pill"><img src="html.png" alt="HTML"><p>HTML</p></div>
-        <div class="skill-pill"><img src="css-3.png" alt="CSS"><p>CSS</p></div>
-        <div class="skill-pill"><img src="js.png" alt="JavaScript"><p>JavaScript</p></div>
-        <div class="skill-pill"><img src="AspLogo.png" alt="ASP.NET"><p>ASP.NET</p></div>
-        <div class="skill-pill"><img src="jQuery.png" alt="jQuery"><p>jQuery</p></div>
-        <div class="skill-pill"><img src="Ajax.png" alt="AJAX"><p>AJAX</p></div>
-        <div class="skill-pill"><img src="Bootstrap.png" alt="Bootstrap"><p>Bootstrap</p></div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <section id="education" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">Education</div><h2 class="sh">Academic <em>Background</em></h2></div>
-      <div class="reveal">
-        <div class="edu-card glass">
-          <img src="Cairo University.png" alt="Cairo University">
-          <div>
-            <h5>Bachelor in Computer Science</h5>
-            <div class="edu-year">Cairo University · Expected 2027</div>
-            <p>Currently pursuing my degree, focusing on web development, programming languages, and software engineering principles.</p>
-          </div>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-circle"></div>
+
+        <div class="container">
+
+            <div class="hero-tag">
+
+                <span class="pulse"></span>
+
+                Available for freelance work
+
+            </div>
+
+            <h1>
+
+                Business Web<br>
+
+                <span class="serif-word">
+                    Solutions
+                </span>
+
+                Developer
+
+            </h1>
+
+            <p class="hero-sub">
+
+                I build custom web systems that help businesses save time,
+                reduce manual work, and improve customer experience.
+
+            </p>
+
+            <div class="hero-ctas">
+
+                <a href="#projects" class="btn-ice">
+
+                    <i class="bi bi-grid-1x2-fill"></i>
+
+                    View My Work
+
+                </a>
+
+                <a href="#contact" class="btn-frost">
+
+                    <i class="bi bi-send"></i>
+
+                    Get in Touch
+
+                </a>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="certifications" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">Credentials</div><h2 class="sh">Certifications <em>&amp; Trainings</em></h2></div>
-      <div class="cert-wrap reveal">
-        <div class="cert-outer glass">
-          <div class="cert-track" id="certTrack">
-            <div class="cert-item"><img src="Asp.netCert.png" alt="ASP.NET"><p>Developing ASP.NET Web Applications</p></div>
-            <div class="cert-item"><img src="FrontEndCert.png" alt="Frontend"><p>Programming in HTML5, CSS3, JavaScript</p></div>
-            <div class="cert-item"><img src="ClsCert.png" alt="Full Stack"><p>ASP Full Stack Developer</p></div>
-          </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    About Me
+                </div>
+
+                <h2 class="sh">
+                    The Story <em>So Far</em>
+                </h2>
+
+            </div>
+
+            <div class="about-grid reveal">
+
+                <div>
+
+                    <div class="photo-frame">
+
+                        <img src="Profile Photo.jpg"
+                             alt="Mostafa Raafat">
+
+                    </div>
+
+                </div>
+
+                <div class="about-text">
+
+                    <p>
+                        My journey into technology began in middle school when I was
+                        first introduced to programming languages. I was fascinated by
+                        how code could turn ideas into real, functional systems.
+                        That early curiosity inspired me to pursue a degree in
+                        Computer Science, where I am currently continuing to develop
+                        my knowledge and technical skills.
+                    </p>
+
+                    <p>
+                        Alongside my university studies, I dedicate significant time
+                        to self-learning and building practical projects to strengthen
+                        my experience. I continuously explore new concepts and
+                        challenge myself to grow as a developer.
+                    </p>
+
+                    <p>
+                        My goal is to help businesses streamline their operations
+                        and enhance their online presence through efficient and
+                        reliable web solutions.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="cert-footer">
-          <button class="c-btn" id="cPrev"><i class="bi bi-chevron-left"></i></button>
-          <div class="c-dots" id="cDots"></div>
-          <button class="c-btn" id="cNext"><i class="bi bi-chevron-right"></i></button>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Technical Skills
+                </div>
+
+                <h2 class="sh">
+                    My <em>Toolkit</em>
+                </h2>
+
+            </div>
+
+            <div class="skills-wrap reveal">
+
+                <div class="skill-pill">
+
+                    <img src="html.png" alt="HTML">
+
+                    <p>HTML</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="css-3.png" alt="CSS">
+
+                    <p>CSS</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="js.png" alt="JavaScript">
+
+                    <p>JavaScript</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="AspLogo.png" alt="ASP.NET">
+
+                    <p>ASP.NET</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="jQuery.png" alt="jQuery">
+
+                    <p>jQuery</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="Ajax.png" alt="AJAX">
+
+                    <p>AJAX</p>
+
+                </div>
+
+                <div class="skill-pill">
+
+                    <img src="Bootstrap.png" alt="Bootstrap">
+
+                    <p>Bootstrap</p>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="services" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">What I Offer</div><h2 class="sh">Services</h2></div>
-      <div class="srv-grid reveal">
-        <div class="srv-card glass"><div class="srv-icon"><i class="bi bi-code-slash"></i></div><h5>Website Development</h5><p>Modern, responsive websites optimized for performance and conversions.</p></div>
-        <div class="srv-card glass"><div class="srv-icon"><i class="bi bi-vector-pen"></i></div><h5>UI/UX Design</h5><p>User-focused interfaces that improve engagement and usability.</p></div>
-        <div class="srv-card glass"><div class="srv-icon"><i class="bi bi-speedometer2"></i></div><h5>Website Optimization</h5><p>Speed, SEO, and performance improvements for better results.</p></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects" class="section-pad">
-    <div class="container">
-      <div class="reveal"><div class="eyebrow">Featured Work</div><h2 class="sh">Projects</h2></div>
 
-      <div class="proj-block reveal">
-        <div class="proj-info">
-          <div class="proj-num">01</div>
-          <h3>Clinic Appointment Management System</h3>
-          <p>This system helps clinics manage appointments efficiently without the need for a receptionist. Patients can book and confirm appointments automatically, and the system handles scheduling, reminders, and conflicts seamlessly.</p>
-          <p>By automating appointment management, the clinic saves time, reduces errors, and improves patient experience.</p>
-          <div class="tags"><span class="tag">ASP.NET</span><span class="tag">jQuery</span><span class="tag">AJAX</span><span class="tag">Bootstrap</span></div>
+    <!-- EDUCATION -->
+
+    <section id="education" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Education
+                </div>
+
+                <h2 class="sh">
+                    Academic <em>Background</em>
+                </h2>
+
+            </div>
+
+            <div class="reveal">
+
+                <div class="edu-card glass">
+
+                    <img src="Cairo University.png"
+                         alt="Cairo University">
+
+                    <div>
+
+                        <h5>
+                            Bachelor in Computer Science
+                        </h5>
+
+                        <div class="edu-year">
+                            Cairo University · Expected 2027
+                        </div>
+
+                        <p>
+                            Currently pursuing my degree, focusing on web development,
+                            programming languages, and software engineering principles.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="pcar glass">
-          <div class="pcar-track" id="p1track">
-            <div class="pcar-slide"><img src="Screenshot 2026-03-08 031651.png" alt="s1"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-08 031702.png" alt="s2"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-08 031829.png" alt="s3"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-08 031938.png" alt="s4"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-08 032013.png" alt="s5"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-12 201211.png" alt="s6"></div>
-          </div>
-          <div class="pcar-nav">
-            <button class="pcar-btn" onclick="pSlide(1,-1)"><i class="bi bi-chevron-left"></i></button>
-            <button class="pcar-btn" onclick="pSlide(1,1)"><i class="bi bi-chevron-right"></i></button>
-          </div>
-          <div class="pcar-count" id="p1c">1 / 6</div>
+
+    </section>
+
+
+    <!-- CERTIFICATIONS -->
+
+    <section id="certifications" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Credentials
+                </div>
+
+                <h2 class="sh">
+                    Certifications <em>&amp; Trainings</em>
+                </h2>
+
+            </div>
+
+            <div class="cert-wrap reveal">
+
+                <div class="cert-outer glass">
+
+                    <div class="cert-track" id="certTrack">
+
+                        <div class="cert-item">
+
+                            <img src="Asp.netCert.png"
+                                 alt="ASP.NET">
+
+                            <p>
+                                Developing ASP.NET Web Applications
+                            </p>
+
+                        </div>
+
+                        <div class="cert-item">
+
+                            <img src="FrontEndCert.png"
+                                 alt="Frontend">
+
+                            <p>
+                                Programming in HTML5, CSS3, JavaScript
+                            </p>
+
+                        </div>
+
+                        <div class="cert-item">
+
+                            <img src="ClsCert.png"
+                                 alt="Full Stack">
+
+                            <p>
+                                ASP Full Stack Developer
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="cert-footer">
+
+                    <button class="c-btn" id="cPrev">
+
+                        <i class="bi bi-chevron-left"></i>
+
+                    </button>
+
+                    <div class="c-dots"
+                         id="cDots"></div>
+
+                    <button class="c-btn" id="cNext">
+
+                        <i class="bi bi-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
 
-      <div class="proj-block flip reveal">
-        <div class="proj-info">
-          <div class="proj-num">02</div>
-          <h3>Smart Drug Finder Web App</h3>
-          <p>You've probably struggled to find a specific medication in nearby pharmacies before. This system solves that problem by automatically sending your request to multiple nearby pharmacies, so you don't have to search manually.</p>
-          <p>Pharmacies respond with availability and pricing in real time, allowing you to quickly compare options and choose the best one — saving time and effort.</p>
-          <div class="tags"><span class="tag">ASP.NET</span><span class="tag">DDD</span><span class="tag">JWT</span><span class="tag">Bootstrap</span></div>
-          <a href="https://drugfinderr.runasp.net/" target="_blank" class="btn-ice" style="font-size:.85rem;padding:.72rem 1.6rem;"><i class="bi bi-box-arrow-up-right"></i> View Project</a>
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section id="services" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    What I Offer
+                </div>
+
+                <h2 class="sh">
+                    Services
+                </h2>
+
+            </div>
+
+            <div class="srv-grid reveal">
+
+                <div class="srv-card glass">
+
+                    <div class="srv-icon">
+
+                        <i class="bi bi-code-slash"></i>
+
+                    </div>
+
+                    <h5>
+                        Website Development
+                    </h5>
+
+                    <p>
+                        Modern, responsive websites optimized for performance
+                        and conversions.
+                    </p>
+
+                </div>
+
+                <div class="srv-card glass">
+
+                    <div class="srv-icon">
+
+                        <i class="bi bi-vector-pen"></i>
+
+                    </div>
+
+                    <h5>
+                        UI/UX Design
+                    </h5>
+
+                    <p>
+                        User-focused interfaces that improve engagement
+                        and usability.
+                    </p>
+
+                </div>
+
+                <div class="srv-card glass">
+
+                    <div class="srv-icon">
+
+                        <i class="bi bi-speedometer2"></i>
+
+                    </div>
+
+                    <h5>
+                        Website Optimization
+                    </h5>
+
+                    <p>
+                        Speed, SEO, and performance improvements for
+                        better results.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
-        <div class="pcar glass">
-          <div class="pcar-track" id="p2track">
-            <div class="pcar-slide"><img src="Screenshot 2026-03-29 015430.png" alt="s1"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-29 015702.png" alt="s2"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-29 015737.png" alt="s3"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-29 015833.png" alt="s4"></div>
-            <div class="pcar-slide"><img src="Screenshot 2026-03-30 065250.png" alt="s5"></div>
-          </div>
-          <div class="pcar-nav">
-            <button class="pcar-btn" onclick="pSlide(2,-1)"><i class="bi bi-chevron-left"></i></button>
-            <button class="pcar-btn" onclick="pSlide(2,1)"><i class="bi bi-chevron-right"></i></button>
-          </div>
-          <div class="pcar-count" id="p2c">1 / 5</div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Featured Work
+                </div>
+
+                <h2 class="sh">
+                    Projects
+                </h2>
+
+            </div>
+
+
+            <!-- PROJECT 01 -->
+
+            <div class="proj-block reveal">
+
+                <div class="proj-info">
+
+                    <div class="proj-num">
+                        01
+                    </div>
+
+                    <h3>
+                        Clinic Appointment Management System
+                    </h3>
+
+                    <p>
+                        This system helps clinics manage appointments efficiently
+                        without the need for a receptionist. Patients can book and
+                        confirm appointments automatically, and the system handles
+                        scheduling, reminders, and conflicts seamlessly.
+                    </p>
+
+                    <p>
+                        By automating appointment management, the clinic saves time,
+                        reduces errors, and improves patient experience.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            ASP.NET
+                        </span>
+
+                        <span class="tag">
+                            jQuery
+                        </span>
+
+                        <span class="tag">
+                            AJAX
+                        </span>
+
+                        <span class="tag">
+                            Bootstrap
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pcar glass">
+
+                    <div class="pcar-track"
+                         id="p1track">
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-08 031651.png"
+                                 alt="Clinic appointment system dashboard">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-08 031702.png"
+                                 alt="Clinic appointment system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-08 031829.png"
+                                 alt="Clinic appointment system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-08 031938.png"
+                                 alt="Clinic appointment system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-08 032013.png"
+                                 alt="Clinic appointment system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-12 201211.png"
+                                 alt="Clinic appointment system">
+
+                        </div>
+
+                    </div>
+
+                    <div class="pcar-nav">
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(1,-1)">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(1,1)">
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="pcar-count"
+                         id="p1c">
+                        1 / 6
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 02 -->
+
+            <div class="proj-block flip reveal">
+
+                <div class="proj-info">
+
+                    <div class="proj-num">
+                        02
+                    </div>
+
+                    <h3>
+                        Smart Drug Finder Web App
+                    </h3>
+
+                    <p>
+                        You've probably struggled to find a specific medication
+                        in nearby pharmacies before. This system solves that problem
+                        by automatically sending your request to multiple nearby
+                        pharmacies, so you don't have to search manually.
+                    </p>
+
+                    <p>
+                        Pharmacies respond with availability and pricing in real time,
+                        allowing you to quickly compare options and choose the best
+                        one — saving time and effort.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            ASP.NET
+                        </span>
+
+                        <span class="tag">
+                            DDD
+                        </span>
+
+                        <span class="tag">
+                            JWT
+                        </span>
+
+                        <span class="tag">
+                            Bootstrap
+                        </span>
+
+                    </div>
+
+                    <a href="https://drugfinderr.runasp.net/"
+                       target="_blank"
+                       class="btn-ice"
+                       style="font-size:.85rem;padding:.72rem 1.6rem;">
+
+                        <i class="bi bi-box-arrow-up-right"></i>
+
+                        View Project
+
+                    </a>
+
+                </div>
+
+
+                <div class="pcar glass">
+
+                    <div class="pcar-track"
+                         id="p2track">
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-29 015430.png"
+                                 alt="Smart Drug Finder">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-29 015702.png"
+                                 alt="Smart Drug Finder">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-29 015737.png"
+                                 alt="Smart Drug Finder">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-29 015833.png"
+                                 alt="Smart Drug Finder">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-03-30 065250.png"
+                                 alt="Smart Drug Finder">
+
+                        </div>
+
+                    </div>
+
+                    <div class="pcar-nav">
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(2,-1)">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(2,1)">
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="pcar-count"
+                         id="p2c">
+                        1 / 5
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 03 - TICKR -->
+
+            <div class="proj-block reveal">
+
+                <div class="proj-info">
+
+                    <div class="proj-num">
+                        03
+                    </div>
+
+                    <h3>
+                        TICKR — Financial Market Data Automation System
+                    </h3>
+
+                    <p>
+                        TICKR is a production financial data automation system
+                        developed to solve a real operational need within a financial
+                        institution. It automates the process of collecting daily
+                        End-of-Day market data from external providers, processing
+                        and standardizing the data, and storing it for use in internal
+                        systems, analysis, and reporting.
+                    </p>
+
+                    <p>
+                        The system supports multiple data providers through a flexible
+                        architecture, allowing providers to be added or replaced
+                        without rebuilding the core system. It also validates incoming
+                        data, handles execution errors, logs operations, and runs
+                        automatically according to a predefined schedule.
+                    </p>
+
+                    <p>
+                        The solution provides a complete workflow from market data
+                        collection and processing to structured reporting and
+                        exporting data in multiple formats for analysis and sharing.
+                    </p>
+
+                    <div class="tags">
+
+                        <span class="tag">
+                            C#
+                        </span>
+
+                        <span class="tag">
+                            .NET
+                        </span>
+
+                        <span class="tag">
+                            REST APIs
+                        </span>
+
+                        <span class="tag">
+                            EF Core
+                        </span>
+
+                        <span class="tag">
+                            Oracle
+                        </span>
+
+                        <span class="tag">
+                            SQL Server
+                        </span>
+
+                        <span class="tag">
+                            Design Patterns
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TICKR SCREENSHOTS -->
+
+                <div class="pcar glass">
+
+                    <div class="pcar-track"
+                         id="p3track">
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-08-27 133057.png"
+                                 alt="TICKR financial market data system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-08-27 133138.png"
+                                 alt="TICKR financial market data system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-08-27 133153.png"
+                                 alt="TICKR financial market data system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-08-27 133159.png"
+                                 alt="TICKR financial market data system">
+
+                        </div>
+
+                        <div class="pcar-slide">
+
+                            <img src="Screenshot 2026-08-27 133209.png"
+                                 alt="TICKR financial market data system">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="pcar-nav">
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(3,-1)">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+                        <button class="pcar-btn"
+                                onclick="pSlide(3,1)">
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="pcar-count"
+                         id="p3c">
+                        1 / 5
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section id="contact" class="section-pad">
-    <div class="container">
-      <div class="reveal" style="text-align:center">
-        <div class="eyebrow" style="justify-content:center">Contact</div>
-        <h2 class="sh" style="text-align:center">Let's Work <em>Together</em></h2>
-      </div>
-      <div class="contact-box reveal">
-        <p>Feel free to reach out directly. I typically respond within 24 hours.</p>
-        <div class="clinks">
-          <a href="mailto:mr0388210@gmail.com" class="clink glass"><div class="ci"><i class="bi bi-envelope-fill"></i></div><div><div class="cl">Email</div><div class="cv">mr0388210@gmail.com</div></div></a>
-          <a href="tel:+201155470401" class="clink glass"><div class="ci"><i class="bi bi-telephone-fill"></i></div><div><div class="cl">Phone</div><div class="cv">+20 115 547 0401</div></div></a>
-          <a href="https://www.linkedin.com/in/mostafa-raafat-a90455154/" target="_blank" class="clink glass"><div class="ci"><i class="bi bi-linkedin"></i></div><div><div class="cl">LinkedIn</div><div class="cv">linkedin.com/in/MostafaRaafat</div></div></a>
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="section-pad">
+
+        <div class="container">
+
+            <div class="reveal"
+                 style="text-align:center">
+
+                <div class="eyebrow"
+                     style="justify-content:center">
+                    Contact
+                </div>
+
+                <h2 class="sh"
+                    style="text-align:center">
+                    Let's Work <em>Together</em>
+                </h2>
+
+            </div>
+
+
+            <div class="contact-box reveal">
+
+                <p>
+                    Feel free to reach out directly.
+                    I typically respond within 24 hours.
+                </p>
+
+
+                <div class="clinks">
+
+
+                    <!-- EMAIL -->
+
+                    <a href="mailto:mr0388210@gmail.com"
+                       class="clink glass">
+
+                        <div class="ci">
+
+                            <i class="bi bi-envelope-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="cl">
+                                Email
+                            </div>
+
+                            <div class="cv">
+                                mr0388210@gmail.com
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PHONE -->
+
+                    <a href="tel:+201155470401"
+                       class="clink glass">
+
+                        <div class="ci">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="cl">
+                                Phone
+                            </div>
+
+                            <div class="cv">
+                                +20 115 547 0401
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- LINKEDIN -->
+
+                    <a href="https://www.linkedin.com/in/mostafa-raafat-a90455154/"
+                       target="_blank"
+                       class="clink glass">
+
+                        <div class="ci">
+
+                            <i class="bi bi-linkedin"></i>
+
+                        </div>
+
+                        <div>
+
+                            <div class="cl">
+                                LinkedIn
+                            </div>
+
+                            <div class="cv">
+                                linkedin.com/in/MostafaRaafat
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-  </section>
 
-  <footer><p>© 2026 Mostafa Raafat — All Rights Reserved</p></footer>
+    </section>
 
-  <script>
-    document.getElementById('ham').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
 
-    document.querySelectorAll('.reveal').forEach(el=>
-      new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.1}).observe(el)
-    );
+    <!-- FOOTER -->
 
-    let ci=0; const ct=3;
-    const cTrack=document.getElementById('certTrack');
-    const dotsEl=document.getElementById('cDots');
-    for(let i=0;i<ct;i++){
-      const d=document.createElement('div'); d.className='c-dot'+(i===0?' on':'');
-      d.addEventListener('click',()=>setCert(i)); dotsEl.appendChild(d);
-    }
-    function setCert(n){ ci=n; cTrack.style.transform=`translateX(-${n*100}%)`; document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('on',i===n)); }
-    document.getElementById('cPrev').addEventListener('click',()=>setCert((ci-1+ct)%ct));
-    document.getElementById('cNext').addEventListener('click',()=>setCert((ci+1)%ct));
+    <footer>
 
-    const ps={1:{i:0,t:6},2:{i:0,t:5}};
-    function pSlide(id,d){ const s=ps[id]; s.i=(s.i+d+s.t)%s.t; document.getElementById(`p${id}track`).style.transform=`translateX(-${s.i*100}%)`; document.getElementById(`p${id}c`).textContent=`${s.i+1} / ${s.t}`; }
-  </script>
+        <p>
+            © 2026 Mostafa Raafat — All Rights Reserved
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* =========================
+           MOBILE NAVIGATION
+        ========================= */
+
+        document
+            .getElementById('ham')
+            .addEventListener('click', () => {
+
+                document
+                    .getElementById('navLinks')
+                    .classList.toggle('open');
+
+            });
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        document
+            .querySelectorAll('.reveal')
+            .forEach(el => {
+
+                new IntersectionObserver(
+                    entries => {
+
+                        entries.forEach(entry => {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target.classList.add('on');
+
+                            }
+
+                        });
+
+                    },
+                    {
+                        threshold: 0.1
+                    }
+                ).observe(el);
+
+            });
+
+
+        /* =========================
+           CERTIFICATION CAROUSEL
+        ========================= */
+
+        let ci = 0;
+
+        const ct = 3;
+
+        const certTrack =
+            document.getElementById('certTrack');
+
+        const dotsEl =
+            document.getElementById('cDots');
+
+
+        for (let i = 0; i < ct; i++) {
+
+            const d =
+                document.createElement('div');
+
+            d.className =
+                'c-dot' + (i === 0 ? ' on' : '');
+
+            d.addEventListener(
+                'click',
+                () => setCert(i)
+            );
+
+            dotsEl.appendChild(d);
+
+        }
+
+
+        function setCert(n) {
+
+            ci = n;
+
+            certTrack.style.transform =
+                `translateX(-${n * 100}%)`;
+
+            document
+                .querySelectorAll('.c-dot')
+                .forEach((d, i) => {
+
+                    d.classList.toggle(
+                        'on',
+                        i === n
+                    );
+
+                });
+
+        }
+
+
+        document
+            .getElementById('cPrev')
+            .addEventListener(
+                'click',
+                () => setCert(
+                    (ci - 1 + ct) % ct
+                )
+            );
+
+
+        document
+            .getElementById('cNext')
+            .addEventListener(
+                'click',
+                () => setCert(
+                    (ci + 1) % ct
+                )
+            );
+
+
+        /* =========================
+           PROJECT CAROUSELS
+        ========================= */
+
+        const ps = {
+
+            1: {
+                i: 0,
+                t: 6
+            },
+
+            2: {
+                i: 0,
+                t: 5
+            },
+
+            3: {
+                i: 0,
+                t: 5
+            }
+
+        };
+
+
+        function pSlide(id, direction) {
+
+            const slider = ps[id];
+
+            slider.i =
+                (slider.i + direction + slider.t)
+                % slider.t;
+
+
+            document
+                .getElementById(`p${id}track`)
+                .style.transform =
+                `translateX(-${slider.i * 100}%)`;
+
+
+            document
+                .getElementById(`p${id}c`)
+                .textContent =
+                `${slider.i + 1} / ${slider.t}`;
+
+        }
+
+    </script>
+
 </body>
 </html>
+```
